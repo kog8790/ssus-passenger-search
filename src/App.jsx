@@ -1,6 +1,33 @@
+import { useState } from "react";
 import "./App.css";
+import { searchPassengers } from "./services/supabase";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [results, setResults] = useState([]);
+  const [hasSearched, setHasSearched] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleSearch(event) {
+    event.preventDefault();
+
+    setLoading(true);
+    setError("");
+    setHasSearched(true);
+
+    try {
+      const passengerResults = await searchPassengers(searchTerm);
+      setResults(passengerResults);
+    } catch (err) {
+      console.error(err);
+      setError("Unable to search the passenger archive.");
+      setResults([]);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <main className="archive-page">
       <header className="site-header">
@@ -23,48 +50,89 @@ function App() {
         </p>
       </section>
 
-      <section className="search-panel">
+      <form className="search-panel" onSubmit={handleSearch}>
         <label htmlFor="search">Search the Archive</label>
 
         <div className="search-row">
           <input
             id="search"
             type="search"
-            placeholder="Search by passenger name, voyage, class, or year..."
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+            placeholder="Search by passenger name, voyage, class, or port..."
           />
-          <button>SEARCH</button>
+
+          <button type="submit" disabled={loading}>
+            {loading ? "SEARCHING..." : "SEARCH"}
+          </button>
         </div>
-
-        <div className="filters">
-          <select>
-            <option>All Classes</option>
-            <option>First Class</option>
-            <option>Cabin Class</option>
-            <option>Tourist Class</option>
-          </select>
-
-          <select>
-            <option>All Years</option>
-          </select>
-
-          <select>
-            <option>All Voyages</option>
-          </select>
-        </div>
-      </section>
+      </form>
 
       <section className="results-section">
         <div className="results-header">
           <h2>Search Results</h2>
-          <span>Enter a search term to begin.</span>
+          <span>
+            {loading
+              ? "Searching archive..."
+              : results.length > 0
+                ? `${results.length} record${results.length === 1 ? "" : "s"} found`
+                : hasSearched
+                  ? "No records found."
+                  : "Enter a search term to begin."}
+          </span>
         </div>
 
-        <div className="empty-state">
-          <p>
-            Passenger records will appear here once the Supabase archive is
-            connected.
-          </p>
-        </div>
+        {error && <div className="empty-state">{error}</div>}
+
+        {!error && !loading && results.length === 0 && (
+          <div className="empty-state">
+            <p>
+              {hasSearched
+                ? "No matching passenger records were found."
+                : "Passenger records will appear here after searching."}
+            </p>
+          </div>
+        )}
+
+        {!error && results.length > 0 && (
+          <div className="results-list">
+            {results.map((passenger) => (
+              <article
+                className="result-card"
+                key={passenger.passenger_record_id}
+              >
+                <h3>{passenger.full_name || "Unnamed Passenger"}</h3>
+
+                <div className="result-grid">
+                  <p>
+                    <strong>Voyage:</strong>{" "}
+                    {passenger.voyage_number || "Unknown"}
+                  </p>
+                  <p>
+                    <strong>Sailing Date:</strong>{" "}
+                    {passenger.sailing_date || "Unknown"}
+                  </p>
+                  <p>
+                    <strong>Direction:</strong>{" "}
+                    {passenger.direction || "Unknown"}
+                  </p>
+                  <p>
+                    <strong>Class:</strong>{" "}
+                    {passenger.passenger_class || "Unknown"}
+                  </p>
+                  <p>
+                    <strong>Embarked:</strong>{" "}
+                    {passenger.embarking_port || "Unknown"}
+                  </p>
+                  <p>
+                    <strong>Debarked:</strong>{" "}
+                    {passenger.debarking_port || "Unknown"}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
       </section>
 
       <footer>
