@@ -48,20 +48,24 @@ body {
   margin-bottom: -18px;
 }
 
-nav {
+.site-nav {
   display: flex;
   gap: 28px;
   font-size: 0.78rem;
   letter-spacing: 0.08em;
 }
 
-nav a {
+.site-nav a {
   color: var(--navy);
   text-decoration: none;
 }
 
-nav .active {
+.site-nav a:nth-child(2) {
   color: var(--gold);
+}
+
+.nav-icon {
+  display: none;
 }
 
 .hero-section {
@@ -350,16 +354,31 @@ button:disabled {
     gap: 18px;
   }
 
-  .nav-top,
-  .nav-bottom {
+  .site-nav {
     width: 100%;
+    order: 1;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .site-nav a {
+    display: grid;
     justify-items: center;
-    gap: 18px;
+    gap: 8px;
+    white-space: nowrap;
+    font-size: 0.82rem;
+  }
+
+  .nav-icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    stroke-width: 1.8;
   }
 
   .logo-link {
+    order: 2;
     width: auto;
     justify-content: center;
   }
@@ -367,10 +386,6 @@ button:disabled {
   .site-logo {
     height: 82px;
     margin: 0;
-  }
-
-  nav a {
-    white-space: nowrap;
   }
 
   .search-panel,

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Home, Search, ShoppingBag, Info } from "lucide-react";
 import "./App.css";
 import { searchPassengers } from "./services/supabase";
 
@@ -54,11 +55,6 @@ function App() {
   return (
     <main className="archive-page">
       <header className="site-header">
-        <nav className="nav-top">
-          <a>HOME</a>
-          <a>SHOP</a>
-        </nav>
-
         <a className="logo-link" href="/">
           <img
             src="/hull_488_noBG.png"
@@ -67,9 +63,26 @@ function App() {
           />
         </a>
 
-        <nav className="nav-bottom">
-          <a className="active">PASSENGER SEARCH</a>
-          <a>ABOUT</a>
+        <nav className="site-nav" aria-label="Primary navigation">
+          <a>
+            <Home className="nav-icon" aria-hidden="true" />
+            <span>HOME</span>
+          </a>
+
+          <a>
+            <Search className="nav-icon" aria-hidden="true" />
+            <span>SEARCH</span>
+          </a>
+
+          <a>
+            <ShoppingBag className="nav-icon" aria-hidden="true" />
+            <span>SHOP</span>
+          </a>
+
+          <a>
+            <Info className="nav-icon" aria-hidden="true" />
+            <span>ABOUT</span>
+          </a>
         </nav>
       </header>
 
