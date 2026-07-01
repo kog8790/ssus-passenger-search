@@ -79,7 +79,7 @@ nav .active {
 h1 {
   margin: 0;
   color: var(--navy);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: clamp(2.6rem, 7vw, 5.8rem);
   line-height: 0.95;
   text-transform: uppercase;
@@ -106,7 +106,7 @@ h1 {
   display: block;
   margin-bottom: 14px;
   color: var(--navy);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 1.7rem;
 }
 
@@ -155,7 +155,7 @@ button {
 .results-header h2 {
   margin: 0;
   color: var(--navy);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 2rem;
 }
 
@@ -180,7 +180,7 @@ button {
   max-width: 920px;
   margin: 0 auto 68px;
   text-align: center;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: clamp(2rem, 4.6vw, 4.2rem);
   line-height: 1.08;
 }
@@ -232,7 +232,7 @@ button {
 .result-card h3 {
   margin: 0 0 16px;
   color: var(--navy);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 1.6rem;
 }
 
