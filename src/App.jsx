@@ -44,6 +44,11 @@ function App() {
   return (
     <main className="archive-page">
       <header className="site-header">
+        <nav className="nav-top">
+          <a>HOME</a>
+          <a>SHOP</a>
+        </nav>
+
         <a className="logo-link" href="/">
           <img
             src="/hull_488_noBG.png"
@@ -52,9 +57,7 @@ function App() {
           />
         </a>
 
-        <nav>
-          <a>HOME</a>
-          <a>SHOP</a>
+        <nav className="nav-bottom">
           <a className="active">PASSENGER SEARCH</a>
           <a>ABOUT</a>
         </nav>
