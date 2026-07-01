@@ -39,6 +39,3 @@ export async function searchPassengers(searchTerm) {
 
   return data;
 }
-
-console.log("Supabase URL:", supabaseUrl);
-console.log("Supabase key starts:", supabaseAnonKey?.slice(0, 16));
