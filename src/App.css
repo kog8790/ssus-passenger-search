@@ -303,6 +303,18 @@ button {
 
 }
 
+.manifest-date {
+  font-family: "Caveat", cursive;
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: rgba(29, 44, 72, 0.68);
+  letter-spacing: 0.02em;
+}
+
+.manifest-date-row {
+  align-items: baseline;
+}
+
 button:disabled {
   opacity: 0.65;
   cursor: not-allowed;

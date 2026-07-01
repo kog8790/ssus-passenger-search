@@ -2,6 +2,19 @@ import { useState } from "react";
 import "./App.css";
 import { searchPassengers } from "./services/supabase";
 
+function formatSailingDate(dateString) {
+  if (!dateString) return "Unknown";
+
+  const date = new Date(`${dateString}T12:00:00`);
+
+  return date.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
@@ -122,9 +135,11 @@ function App() {
                     <span>{passenger.passenger_class || "Unknown"}</span>
                   </div>
 
-                  <div className="manifest-row">
+                  <div className="manifest-row manifest-date-row">
                     <span className="manifest-label">Sailing Date</span>
-                    <span>{passenger.sailing_date || "Unknown"}</span>
+                    <span className="manifest-date">
+                      {formatSailingDate(passenger.sailing_date)}
+                    </span>
                   </div>
 
                   <div className="manifest-row">
