@@ -47,7 +47,7 @@ function App() {
       setResults(passengerResults);
     } catch (err) {
       console.error(err);
-      setError("Unable to search the passenger archive.");
+      setError(err.message);
       setResults([]);
     } finally {
       setLoading(false);
