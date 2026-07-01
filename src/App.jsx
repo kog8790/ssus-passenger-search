@@ -107,33 +107,39 @@ function App() {
                 className="result-card"
                 key={passenger.passenger_record_id}
               >
-                <h3>{passenger.full_name || "Unnamed Passenger"}</h3>
+                <div className="manifest-header">
+                  <h3>{passenger.full_name || "Unnamed Passenger"}</h3>
 
-                <div className="result-grid">
-                  <p>
-                    <strong>Voyage:</strong>{" "}
-                    {passenger.voyage_number || "Unknown"}
-                  </p>
-                  <p>
-                    <strong>Sailing Date:</strong>{" "}
-                    {passenger.sailing_date || "Unknown"}
-                  </p>
-                  <p>
-                    <strong>Direction:</strong>{" "}
-                    {passenger.direction || "Unknown"}
-                  </p>
-                  <p>
-                    <strong>Class:</strong>{" "}
-                    {passenger.passenger_class || "Unknown"}
-                  </p>
-                  <p>
-                    <strong>Embarked:</strong>{" "}
-                    {passenger.embarking_port || "Unknown"}
-                  </p>
-                  <p>
-                    <strong>Debarked:</strong>{" "}
-                    {passenger.debarking_port || "Unknown"}
-                  </p>
+                  <div className="voyage-badge">
+                    Voyage {passenger.voyage_number || "Unknown"}
+                  </div>
+                </div>
+
+                <div className="manifest-body">
+
+                  <div className="manifest-row">
+                    <span className="manifest-label">Passenger Class</span>
+                    <span>{passenger.passenger_class || "Unknown"}</span>
+                  </div>
+
+                  <div className="manifest-row">
+                    <span className="manifest-label">Sailing Date</span>
+                    <span>{passenger.sailing_date || "Unknown"}</span>
+                  </div>
+
+                  <div className="manifest-row">
+                    <span className="manifest-label">Direction</span>
+                    <span>{passenger.direction || "Unknown"}</span>
+                  </div>
+
+                  <div className="manifest-route">
+                    <span>{passenger.embarking_port || "Unknown"}</span>
+
+                    <span className="route-arrow">→</span>
+
+                    <span>{passenger.debarking_port || "Unknown"}</span>
+                  </div>
+
                 </div>
               </article>
             ))}
