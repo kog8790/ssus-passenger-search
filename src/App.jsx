@@ -18,9 +18,11 @@ function formatSailingDate(dateString) {
 
 function formatPassengerName(passenger) {
   return [
+    passenger.prefix,
     passenger.first_name,
     passenger.middle_name,
     passenger.last_name,
+    passenger.suffix,
   ]
     .filter(Boolean)
     .join(" ");
@@ -164,6 +166,11 @@ function App() {
                     <div className="manifest-row">
                       <span className="manifest-label">Passenger Class</span>
                       <span>{passenger.passenger_class || "Unknown"}</span>
+                    </div>
+
+                    <div className="manifest-row">
+                      <span className="manifest-label">Cabin Number</span>
+                      <span>{passenger.cabin_number || "Unknown"}</span>
                     </div>
 
                     <div className="manifest-row">
