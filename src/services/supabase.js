@@ -14,8 +14,21 @@ export async function searchPassengers(searchTerm) {
     .from("vw_public_search")
     .select("*")
     .or(
-      `full_name.ilike.%${term}%,first_name.ilike.%${term}%,middle_name.ilike.%${term}%,last_name.ilike.%${term}%,voyage_number.ilike.%${term}%,embarking_port.ilike.%${term}%,debarking_port.ilike.%${term}%`
-    )
+        [
+            `full_name.ilike.%${term}%`,
+            `prefix.ilike.%${term}%`,
+            `first_name.ilike.%${term}%`,
+            `middle_name.ilike.%${term}%`,
+            `last_name.ilike.%${term}%`,
+            `suffix.ilike.%${term}%`,
+            `voyage_number.ilike.%${term}%`,
+            `direction.ilike.%${term}%`,
+            `passenger_class.ilike.%${term}%`,
+            `cabin_number.ilike.%${term}%`,
+            `embarking_port.ilike.%${term}%`,
+            `debarking_port.ilike.%${term}%`,
+        ].join(",")
+        )
     .order("sailing_date", { ascending: true })
     .limit(100);
 
