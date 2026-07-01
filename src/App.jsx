@@ -15,6 +15,16 @@ function formatSailingDate(dateString) {
   });
 }
 
+function formatPassengerName(passenger) {
+  return [
+    passenger.first_name,
+    passenger.middle_name,
+    passenger.last_name,
+  ]
+    .filter(Boolean)
+    .join(" ");
+}
+
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
@@ -124,7 +134,7 @@ function App() {
                 key={passenger.passenger_record_id}
               >
                 <div className="manifest-header">
-                  <h3>{passenger.full_name || "Unnamed Passenger"}</h3>
+                  <h3>{formatPassengerName(passenger) || "Unnamed Passenger"}</h3>
 
                   <div className="voyage-badge">
                     Voyage {passenger.voyage_number || "Unknown"}
