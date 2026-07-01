@@ -227,42 +227,34 @@ button {
 }
 
 .result-card {
-  padding: 24px 28px;
-
-  border: 1px solid #cbb78c;
+  padding: 26px 32px;
+  border: 1px solid #c8ae78;
 
   background:
+    linear-gradient(rgba(255, 248, 226, 0.68), rgba(255, 248, 226, 0.68)),
     repeating-linear-gradient(
       to bottom,
-      #fffdf7 0,
-      #fffdf7 33px,
-      rgba(182,150,84,.18) 34px
-    );
+      transparent 0,
+      transparent 31px,
+      rgba(148, 111, 52, 0.14) 32px
+    ),
+    #fbf1d5;
 
   box-shadow:
-    inset 0 0 25px rgba(80,55,20,.05);
-
-  transition: .2s ease;
+    inset 0 0 42px rgba(113, 82, 38, 0.08),
+    0 8px 18px rgba(31, 24, 13, 0.04);
 }
 
 .result-card h3 {
-  margin: 0;
-
-  font-family: "Caveat", cursive;
-
-  font-size: 2.3rem;
-
-  font-weight: 600;
-
-  color: #1d2c48;
-
-  letter-spacing: .02em;
-
+  margin: 0 0 18px;
+  padding-bottom: 10px;
   border-bottom: 1px solid rgba(185,154,91,.45);
 
-  padding-bottom: 10px;
-
-  margin-bottom: 18px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 0.02em;
 }
 
 .result-grid strong {
@@ -303,16 +295,45 @@ button {
 
 }
 
-.manifest-date {
-  font-family: "Caveat", cursive;
-  font-size: 1.55rem;
-  font-weight: 600;
-  color: rgba(29, 44, 72, 0.68);
-  letter-spacing: 0.02em;
+.manifest-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 36px;
 }
 
-.manifest-date-row {
+.manifest-row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 14px;
   align-items: baseline;
+}
+
+.manifest-label {
+  color: #8f6b32;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.manifest-route {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(185, 154, 91, 0.35);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+
+  color: var(--navy);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.55rem;
+  font-weight: 600;
+}
+
+.route-arrow {
+  color: #8f6b32;
 }
 
 button:disabled {

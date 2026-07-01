@@ -129,32 +129,33 @@ function App() {
                 </div>
 
                 <div className="manifest-body">
+                  <div className="manifest-details">
+                    <div className="manifest-row">
+                      <span className="manifest-label">Voyage</span>
+                      <span>{passenger.voyage_number || "Unknown"}</span>
+                    </div>
 
-                  <div className="manifest-row">
-                    <span className="manifest-label">Passenger Class</span>
-                    <span>{passenger.passenger_class || "Unknown"}</span>
-                  </div>
+                    <div className="manifest-row">
+                      <span className="manifest-label">Passenger Class</span>
+                      <span>{passenger.passenger_class || "Unknown"}</span>
+                    </div>
 
-                  <div className="manifest-row manifest-date-row">
-                    <span className="manifest-label">Sailing Date</span>
-                    <span className="manifest-date">
-                      {formatSailingDate(passenger.sailing_date)}
-                    </span>
-                  </div>
+                    <div className="manifest-row">
+                      <span className="manifest-label">Sailing Date</span>
+                      <span>{formatSailingDate(passenger.sailing_date)}</span>
+                    </div>
 
-                  <div className="manifest-row">
-                    <span className="manifest-label">Direction</span>
-                    <span>{passenger.direction || "Unknown"}</span>
+                    <div className="manifest-row">
+                      <span className="manifest-label">Direction</span>
+                      <span>{passenger.direction || "Unknown"}</span>
+                    </div>
                   </div>
 
                   <div className="manifest-route">
                     <span>{passenger.embarking_port || "Unknown"}</span>
-
                     <span className="route-arrow">→</span>
-
                     <span>{passenger.debarking_port || "Unknown"}</span>
                   </div>
-
                 </div>
               </article>
             ))}
