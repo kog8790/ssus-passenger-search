@@ -31,7 +31,13 @@ function App() {
   return (
     <main className="archive-page">
       <header className="site-header">
-        <div className="brand">HULL 488 LITERARY, LLC</div>
+        <a className="logo-link" href="/">
+          <img
+            src="/hull_488_noBG.png"
+            alt="Hull 488 Literary"
+            className="site-logo"
+          />
+        </a>
 
         <nav>
           <a>HOME</a>
@@ -135,8 +141,20 @@ function App() {
         )}
       </section>
 
-      <footer>
-        <p>© 2026 Hull 488 Literary, LLC. All Rights Reserved.</p>
+      <footer className="site-footer">
+        <div className="footer-quote">
+          “The SS United States remains the fastest, greatest ocean liner ever built—
+          a singular symbol of American engineering and maritime majesty.”
+        </div>
+
+        <div className="footer-bottom">
+          <p>© 2026 Hull 488 Literary, LLC. All Rights Reserved.</p>
+
+          <div className="footer-contact">
+            <strong>Contact Us:</strong>
+            <a href="mailto:ssusopguide@gmail.com">ssusopguide@gmail.com</a>
+          </div>
+        </div>
       </footer>
     </main>
   );
