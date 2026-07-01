@@ -227,38 +227,80 @@ button {
 }
 
 .result-card {
-  padding: 22px 26px;
-  border: 1px solid var(--soft-gold);
+  padding: 24px 28px;
+
+  border: 1px solid #cbb78c;
+
   background:
     repeating-linear-gradient(
       to bottom,
-      #fffdf6 0,
-      #fffdf6 31px,
-      rgba(185, 154, 91, 0.22) 32px
+      #fffdf7 0,
+      #fffdf7 33px,
+      rgba(182,150,84,.18) 34px
     );
+
+  box-shadow:
+    inset 0 0 25px rgba(80,55,20,.05);
+
+  transition: .2s ease;
 }
 
 .result-card h3 {
-  letter-spacing: 0.03em;
-  border-bottom: 1px solid var(--soft-gold);
+  margin: 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 2.3rem;
+
+  font-weight: 600;
+
+  color: #1d2c48;
+
+  letter-spacing: .02em;
+
+  border-bottom: 1px solid rgba(185,154,91,.45);
+
   padding-bottom: 10px;
+
+  margin-bottom: 18px;
 }
 
 .result-grid strong {
   display: block;
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
+
+  font-size: .72rem;
+
   text-transform: uppercase;
-  color: var(--gold);
+
+  letter-spacing: .18em;
+
+  color: #8f6b32;
+
+  margin-bottom: 2px;
 }
 
 .result-grid p {
-  margin: 0;
-  color: var(--text);
+
+  padding-bottom: 6px;
+
+  border-bottom: 1px dotted rgba(100,80,40,.18);
+
 }
 
 .result-grid strong {
   color: var(--navy);
+}
+
+.result-card:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+
+    inset 0 0 30px rgba(80,55,20,.05),
+
+    0 8px 22px rgba(0,0,0,.06);
+
 }
 
 button:disabled {
