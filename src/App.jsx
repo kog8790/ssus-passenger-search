@@ -207,23 +207,23 @@ function App() {
                   )}
 
                   {passenger.notes && (
-                    <div className="manifest-extra">
-                      <span className="manifest-label">Notes</span>
+                  <div className="manifest-extra">
+                    <span className="manifest-label manifest-extra-label">Notes</span>
 
-                      {isUrl(passenger.notes) ? (
-                        <a
-                          href={passenger.notes}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="manifest-link"
-                        >
-                          Learn more
-                        </a>
-                      ) : (
-                        <p>{passenger.notes}</p>
-                      )}
-                    </div>
-                  )}
+                    {isUrl(passenger.notes) ? (
+                      <a
+                        href={passenger.notes}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="manifest-link"
+                      >
+                        Learn more
+                      </a>
+                    ) : (
+                      <p>{passenger.notes}</p>
+                    )}
+                  </div>
+                )}
                 </div>
               </article>
             ))}

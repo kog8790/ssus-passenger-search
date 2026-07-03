@@ -306,6 +306,13 @@ button {
 .manifest-extra {
   margin-top: 14px;
   text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
+
+.manifest-extra-label {
+  display: block;
 }
 
 .manifest-link {
