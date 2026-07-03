@@ -95,7 +95,6 @@ function App() {
   }
 
   const pageSize = 25;
-  const maxPages = 5;
   const totalPages = Math.min(Math.ceil(totalCount / pageSize), maxPages);
   const hasEarlierEntries = page > 1;
   const hasLaterEntries = page < totalPages;
@@ -168,7 +167,7 @@ function App() {
             {loading
               ? "Searching archive..."
               : results.length > 0
-                ? `Showing ${results.length} of ${totalCount} matching records`
+                ? `Showing ${((page - 1) * pageSize) + 1}–${Math.min(page * pageSize, totalCount)} of ${totalCount} matching records`
                 : hasSearched
                   ? "No records found."
                   : "Enter a search term to begin."}
