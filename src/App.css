@@ -303,6 +303,17 @@ button {
 
 }
 
+.manifest-link {
+  color: var(--navy);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.manifest-link:hover {
+  color: var(--gold);
+}
+
 .manifest-details {
   display: grid;
   grid-template-columns: 1fr 1fr;

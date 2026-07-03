@@ -25,6 +25,10 @@ function displayValue(value) {
   return value || "Not Recorded";
 }
 
+function isUrl(value) {
+  return typeof value === "string" && /^https?:\/\//i.test(value.trim());
+}
+
 function formatPassengerName(passenger) {
   return [
     passenger.prefix,
@@ -205,7 +209,19 @@ function App() {
                   {passenger.notes && (
                     <div className="manifest-extra">
                       <span className="manifest-label">Notes</span>
-                      <p>{passenger.notes}</p>
+
+                      {isUrl(passenger.notes) ? (
+                        <a
+                          href={passenger.notes}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="manifest-link"
+                        >
+                          Learn more
+                        </a>
+                      ) : (
+                        <p>{passenger.notes}</p>
+                      )}
                     </div>
                   )}
                 </div>
