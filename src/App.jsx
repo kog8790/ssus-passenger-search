@@ -150,10 +150,6 @@ function App() {
               >
                 <div className="manifest-header">
                   <h3>{formatPassengerName(passenger) || "Unnamed Passenger"}</h3>
-
-                  <div className="voyage-badge">
-                    Voyage {passenger.voyage_number || "Unknown"}
-                  </div>
                 </div>
 
                 <div className="manifest-body">
