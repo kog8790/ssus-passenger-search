@@ -95,7 +95,7 @@ function App() {
   }
 
   const pageSize = 25;
-  const totalPages = Math.min(Math.ceil(totalCount / pageSize), maxPages);
+  const totalPages = Math.ceil(totalCount / pageSize);
   const hasEarlierEntries = page > 1;
   const hasLaterEntries = page < totalPages;
 
@@ -234,13 +234,6 @@ function App() {
                   {passenger.ports_of_call && (
                     <div className="manifest-extra">
                       <span className="manifest-label manifest-extra-label">Ports of Call</span>
-                      <p>{passenger.ports_of_call}</p>
-                    </div>
-                  )}
-
-                  {passenger.ports_of_call && (
-                    <div className="manifest-extra">
-                      <span className="manifest-label">Ports of Call</span>
                       <p>{passenger.ports_of_call}</p>
                     </div>
                   )}
