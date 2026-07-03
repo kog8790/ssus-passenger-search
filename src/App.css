@@ -231,7 +231,7 @@ button {
 }
 
 .result-card {
-  padding: 26px 32px;
+  padding: 22px 30px;
   border: 1px solid #c8ae78;
 
   background:
@@ -255,7 +255,7 @@ button {
   border-bottom: 1px solid rgba(185, 154, 91, 0.45);
 
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.65rem, 3vw, 1.95rem);
+  font-size: clamp(1.45rem, 2.5vw, 1.75rem);
   font-weight: 600;
   color: var(--navy);
   letter-spacing: 0.01em;
@@ -306,7 +306,7 @@ button {
 .manifest-details {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px 28px;
+  gap: 8px 24px;
 }
 
 .manifest-row {
@@ -317,17 +317,17 @@ button {
 }
 
 .manifest-label {
-  color: #8f6b32;
-  font-size: 0.72rem;
+  color: rgba(143, 107, 50, 0.82);
+  font-size: 0.66rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
 .manifest-route {
-  margin-top: 22px;
-  padding-top: 16px;
+  margin-top: 18px;
+  padding-top: 14px;
   border-top: 1px solid rgba(185, 154, 91, 0.35);
 
   display: flex;
@@ -430,7 +430,7 @@ button:disabled {
   }
 
   .result-card h3 {
-    font-size: 1.75rem;
+    font-size: 1.55rem;
     white-space: normal;
   }
 }
