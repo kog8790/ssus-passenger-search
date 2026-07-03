@@ -41,12 +41,19 @@ function formatPassengerName(passenger) {
     .join(" ");
 }
 
+function toRomanNumeral(number) {
+  const numerals = ["I", "II", "III", "IV", "V"];
+  return numerals[number - 1] || number;
+}
+
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
 
   async function handleSearch(event) {
     event.preventDefault();
@@ -56,8 +63,10 @@ function App() {
     setHasSearched(true);
 
     try {
-      const passengerResults = await searchPassengers(searchTerm);
-      setResults(passengerResults);
+      const searchData = await searchPassengers(searchTerm, 1);
+      setResults(searchData.results);
+      setTotalCount(searchData.totalCount);
+      setPage(1);
     } catch (err) {
         console.error(err);
         setError("Unable to search the passenger archive.");
@@ -66,6 +75,30 @@ function App() {
       setLoading(false);
     }
   }
+
+  async function handlePageChange(nextPage) {
+    setLoading(true);
+    setError("");
+
+    try {
+      const searchData = await searchPassengers(searchTerm, nextPage);
+      setResults(searchData.results);
+      setTotalCount(searchData.totalCount);
+      setPage(nextPage);
+    } catch (err) {
+      console.error(err);
+      setError(err.message);
+      setResults([]);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const pageSize = 25;
+  const maxPages = 5;
+  const totalPages = Math.min(Math.ceil(totalCount / pageSize), maxPages);
+  const hasEarlierEntries = page > 1;
+  const hasLaterEntries = page < totalPages;
 
   return (
     <main className="archive-page">
@@ -135,7 +168,7 @@ function App() {
             {loading
               ? "Searching archive..."
               : results.length > 0
-                ? `${results.length} record${results.length === 1 ? "" : "s"} found`
+                ? `Showing ${results.length} of ${totalCount} matching records`
                 : hasSearched
                   ? "No records found."
                   : "Enter a search term to begin."}
@@ -236,6 +269,31 @@ function App() {
             ))}
           </div>
         )}
+      {!error && results.length > 0 && totalPages > 1 && (
+        <div className="archive-pagination">
+          <button
+            type="button"
+            className="archive-page-button"
+            disabled={!hasEarlierEntries || loading}
+            onClick={() => handlePageChange(page - 1)}
+          >
+            ◀ Earlier Entries
+          </button>
+
+          <div className="archive-page-label">
+            Manifest Page {toRomanNumeral(page)} of {toRomanNumeral(totalPages)}
+          </div>
+
+          <button
+            type="button"
+            className="archive-page-button"
+            disabled={!hasLaterEntries || loading}
+            onClick={() => handlePageChange(page + 1)}
+          >
+            Later Entries ▶
+          </button>
+        </div>
+      )}
       </section>
 
       <footer className="site-footer">

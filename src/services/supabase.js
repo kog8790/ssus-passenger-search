@@ -5,14 +5,22 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-export async function searchPassengers(searchTerm) {
+export async function searchPassengers(searchTerm, page = 1) {
   const term = searchTerm.trim();
+  const pageSize = 25;
+  const from = (page - 1) * pageSize;
+  const to = from + pageSize - 1;
 
-  if (!term) return [];
+  if (!term) {
+    return {
+      results: [],
+      totalCount: 0,
+    };
+  }
 
-  const { data, error } = await supabase
+  const { data, error, count } = await supabase
     .from("vw_public_search")
-    .select("*")
+    .select("*", { count: "exact" })
     .or(
         [
             `full_name.ilike.%${term}%`,
@@ -30,12 +38,15 @@ export async function searchPassengers(searchTerm) {
         ].join(",")
         )
     .order("sailing_date", { ascending: true })
-    .limit(100);
+    .range(from, to);
 
   if (error) {
     console.error(error);
     throw error;
   }
 
-  return data;
+  return {
+    results: data,
+    totalCount: count || 0,
+  };
 }
