@@ -194,6 +194,20 @@ function App() {
                     <span className="route-arrow">→</span>
                     <span>{displayValue(passenger.debarking_port)}</span>
                   </div>
+
+                  {passenger.ports_of_call && (
+                    <div className="manifest-extra">
+                      <span className="manifest-label">Ports of Call</span>
+                      <p>{passenger.ports_of_call}</p>
+                    </div>
+                  )}
+
+                  {passenger.notes && (
+                    <div className="manifest-extra">
+                      <span className="manifest-label">Notes</span>
+                      <p>{passenger.notes}</p>
+                    </div>
+                  )}
                 </div>
               </article>
             ))}
