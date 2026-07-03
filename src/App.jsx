@@ -4,16 +4,25 @@ import "./App.css";
 import { searchPassengers } from "./services/supabase";
 
 function formatSailingDate(dateString) {
-  if (!dateString) return "Unknown";
+  if (!dateString) return "Not Recorded";
 
   const date = new Date(`${dateString}T12:00:00`);
 
-  return date.toLocaleDateString("en-US", {
+  const weekday = date.toLocaleDateString("en-US", {
     weekday: "long",
+  });
+
+  const monthDayYear = date.toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",
   });
+
+  return `${weekday}, ${monthDayYear}`;
+}
+
+function displayValue(value) {
+  return value || "Not Recorded";
 }
 
 function formatPassengerName(passenger) {
@@ -156,17 +165,17 @@ function App() {
                   <div className="manifest-details">
                     <div className="manifest-row">
                       <span className="manifest-label">Voyage</span>
-                      <span>{passenger.voyage_number || "Unknown"}</span>
+                      <span>{displayValue(passenger.voyage_number)}</span>
                     </div>
 
                     <div className="manifest-row">
                       <span className="manifest-label">Passenger Class</span>
-                      <span>{passenger.passenger_class || "Unknown"}</span>
+                      <span>{displayValue(passenger.passenger_class)}</span>
                     </div>
 
                     <div className="manifest-row">
                       <span className="manifest-label">Cabin Number</span>
-                      <span>{passenger.cabin_number || "Unknown"}</span>
+                      <span>{displayValue(passenger.cabin_number)}</span>
                     </div>
 
                     <div className="manifest-row">
@@ -176,14 +185,14 @@ function App() {
 
                     <div className="manifest-row">
                       <span className="manifest-label">Direction</span>
-                      <span>{passenger.direction || "Unknown"}</span>
+                      <span>{displayValue(passenger.direction)}</span>
                     </div>
                   </div>
 
                   <div className="manifest-route">
-                    <span>{passenger.embarking_port || "Unknown"}</span>
+                    <span>{displayValue(passenger.embarking_port)}</span>
                     <span className="route-arrow">→</span>
-                    <span>{passenger.debarking_port || "Unknown"}</span>
+                    <span>{displayValue(passenger.debarking_port)}</span>
                   </div>
                 </div>
               </article>
