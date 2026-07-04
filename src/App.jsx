@@ -90,6 +90,7 @@ function App() {
   const turnstileContainerRef = useRef(null);
   const turnstileWidgetId = useRef(null);
   const resultsSectionRef = useRef(null);
+  const pendingSearchTermRef = useRef("");
 
   function showTurnstile() {
     setPendingSearch(true);
@@ -112,7 +113,7 @@ function App() {
         callback: (token) => {
           setTurnstileToken(token);
           setPendingSearch(false);
-          runSearch(1, token);
+          runSearch(1, token, pendingSearchTermRef.current);
         },
         "expired-callback": () => {
           setTurnstileToken("");
@@ -127,13 +128,17 @@ function App() {
     );
   }
 
-  async function runSearch(targetPage, token = turnstileToken) {
+  async function runSearch(
+    targetPage,
+    token = turnstileToken,
+    term = searchTerm
+  ) {
     setLoading(true);
     setError("");
     setHasSearched(true);
 
     try {
-      const searchData = await searchPassengers(searchTerm, targetPage, token);
+      const searchData = await searchPassengers(term, targetPage, token);
 
       setResults(searchData.results);
       setTotalCount(searchData.totalCount);
@@ -164,16 +169,19 @@ function App() {
   async function handleSearch(event) {
     event.preventDefault();
 
+    const submittedTerm = searchTerm.trim();
+    pendingSearchTermRef.current = submittedTerm;
+
     if (!turnstileToken) {
       showTurnstile();
       return;
     }
 
-    runSearch(1);
+    runSearch(1, turnstileToken, submittedTerm);
   }
 
   async function handlePageChange(nextPage) {
-    runSearch(nextPage);
+    runSearch(nextPage, turnstileToken, pendingSearchTermRef.current);
   }
 
   const pageSize = 25;
