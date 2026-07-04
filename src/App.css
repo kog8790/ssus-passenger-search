@@ -726,15 +726,14 @@ button:disabled {
 
   .footer-socials {
     display: flex;
-    justify-content: flex-end;
-    gap: 18px;
-    margin-top: 18px;
+    justify-content: center;
   }
 
-  .footer-socials img {
-    width: 54px;
-    height: 54px;
-    object-fit: contain;
+  .footer-socials svg {
+    width: 42px;
+    height: 42px;
+    stroke-width: 1.8;
+    color: var(--navy);
   }
 
   .footer-contact {
