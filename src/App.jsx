@@ -6,7 +6,8 @@ import {
   Info,
   Facebook,
   Instagram,
-} from "lucide-react";import "./App.css";
+} 
+from "lucide-react";import "./App.css";
 import { searchPassengers } from "./services/archiveApi";
 
 function formatSailingDate(dateString) {
