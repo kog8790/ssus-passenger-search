@@ -139,6 +139,13 @@ function App() {
       setTotalCount(searchData.totalCount);
       setPage(targetPage);
 
+      if (targetPage === 1) {
+        setTurnstileToken("");
+        if (turnstileWidgetId.current && window.turnstile) {
+          window.turnstile.reset(turnstileWidgetId.current);
+        }
+      }
+
       requestAnimationFrame(() => {
         resultsSectionRef.current?.scrollIntoView({
           behavior: "smooth",
