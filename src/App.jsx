@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Home, Search, ShoppingBag, Info } from "lucide-react";
+import { Home, Search, ShipWheel, ShoppingBag, Info } from "lucide-react";
 import "./App.css";
 import { searchPassengers } from "./services/archiveApi";
 
@@ -202,22 +202,22 @@ async function handlePageChange(nextPage) {
         </a>
 
         <nav className="site-nav" aria-label="Primary navigation">
-          <a>
+          <a href="/under-construction.html">
             <Home className="nav-icon" aria-hidden="true" />
             <span>HOME</span>
           </a>
 
-          <a>
+          <a href="/under-construction.html">
             <Search className="nav-icon" aria-hidden="true" />
             <span>SEARCH</span>
           </a>
 
-          <a>
+          <a href="/under-construction.html">
             <ShoppingBag className="nav-icon" aria-hidden="true" />
             <span>SHOP</span>
           </a>
 
-          <a>
+          <a href="/under-construction.html">
             <Info className="nav-icon" aria-hidden="true" />
             <span>ABOUT</span>
           </a>
@@ -225,11 +225,13 @@ async function handlePageChange(nextPage) {
       </header>
 
       <section className="hero-section">
-        <p className="eyebrow">VERIFIED HISTORICAL RECORDS</p>
-        <h1>Passenger Manifest Archive</h1>
+        <h1>SS United States<br />Passenger Manifest Archive</h1>
         <p className="intro">
-          Explore over 93,000 passenger records across 175+ voyages aboard the
-          SS United States.
+          Explore voyages of the SS United States — the fastest ocean liner ever built.
+          Explore the manifests of those who sailed aboard, being added all the time!
+        </p>
+        <p className="scroll-note">
+          Scroll down to find out how to contribute to the archive.
         </p>
       </section>
 
@@ -388,9 +390,22 @@ async function handlePageChange(nextPage) {
       </section>
 
       <footer className="site-footer">
-        <div className="footer-quote">
-          “The SS United States remains the fastest, greatest ocean liner ever built—
-          a singular symbol of American engineering and maritime majesty.”
+        <div className="contribute-section">
+          <p className="archive-status">
+            Passenger Manifest Archive • All records digitized from originals • For General Search Purposes Only
+          </p>
+
+          <h2>Contribute to the Archive</h2>
+
+          <p>
+            This archive is a work in progress and is not complete. More lists will be
+            added as we acquire them. If you have a passenger list in digital format
+            — readable PDF preferred, but JPG images are also fine — please contact us at:
+          </p>
+
+          <a href="mailto:ssusopguide@gmail.com">ssusopguide@gmail.com</a>
+
+          <p className="thank-you">Thank you!</p>
         </div>
 
         <div className="footer-bottom">
