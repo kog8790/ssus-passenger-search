@@ -236,8 +236,6 @@ async function handlePageChange(nextPage) {
       </section>
 
       <form className="search-panel" onSubmit={handleSearch}>
-        <label htmlFor="search">Search the Archive</label>
-
         <div className="search-row">
           <input
             id="search"
@@ -256,6 +254,28 @@ async function handlePageChange(nextPage) {
           ref={turnstileContainerRef}
           className={pendingSearch ? "turnstile-wrap visible" : "turnstile-wrap"}
         />
+
+        <div className="archive-stats">
+          <div>
+            <strong>93,000+</strong>
+            <span>Passenger Records</span>
+          </div>
+
+          <div>
+            <strong>175+</strong>
+            <span>Voyages</span>
+          </div>
+
+          <div>
+            <strong>1952–1969</strong>
+            <span>Years Covered</span>
+          </div>
+        </div>
+
+        <div className="manifest-ribbon">
+          <strong>Passenger Manifest</strong>
+          <span>S.S. United States • Pier 86 • New York City, NY</span>
+        </div>
       </form>
 
       <section
