@@ -4,8 +4,8 @@ import {
   ShipWheel,
   ShoppingBag,
   Info,
-  Facebook,
-  Instagram,
+  FacebookIcon,
+  InstagramIcon,
 } from "lucide-react";
 
 import "./App.css";
