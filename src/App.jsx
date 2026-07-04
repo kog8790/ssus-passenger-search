@@ -1,6 +1,12 @@
 import { useState, useRef } from "react";
-import { Home, Search, ShipWheel, ShoppingBag, Info } from "lucide-react";
-import "./App.css";
+import {
+  Home,
+  ShipWheel,
+  ShoppingBag,
+  Info,
+  Facebook,
+  Instagram,
+} from "lucide-react";import "./App.css";
 import { searchPassengers } from "./services/archiveApi";
 
 function formatSailingDate(dateString) {
@@ -429,12 +435,46 @@ async function handlePageChange(nextPage) {
         </div>
 
         <div className="footer-bottom">
-          <p>© 2026 Hull 488 Literary, LLC. All Rights Reserved.</p>
+
+          <div className="footer-left">
+            <img
+              src="/hull_488_noBG.png"
+              alt="Hull 488 Literary"
+              className="footer-logo"
+            />
+
+            <p>© 2026 Hull 488 Literary, LLC. All Rights Reserved.</p>
+          </div>
 
           <div className="footer-contact">
             <strong>Contact Us:</strong>
-            <a href="mailto:ssusopguide@gmail.com">ssusopguide@gmail.com</a>
+
+            <a href="mailto:ssusopguide@gmail.com">
+              ssusopguide@gmail.com
+            </a>
+
+            <div className="footer-socials">
+              <a
+                href="https://www.facebook.com/share/1HHfNKwkbE/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <Facebook />
+              </a>
+
+              <a
+                href="https://www.instagram.com/ssus_operational_guide"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <Instagram />
+              </a>
+            </div>
+
           </div>
+
         </div>
       </footer>
     </main>
