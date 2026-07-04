@@ -294,14 +294,14 @@ button {
   display: flex;
   justify-content: space-between;
   gap: 32px;
-  align-items: flex-end;
+  align-items: center;
   border-top: 1px solid rgba(223, 208, 173, 0.7);
   padding-top: 26px;
 }
 
 .footer-left {
   display: grid;
-  gap: 18px;
+  gap: 10px;
 }
 
 .footer-logo {
@@ -318,8 +318,8 @@ button {
 }
 
 .footer-socials svg {
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   stroke-width: 1.8;
   color: var(--navy);
   transition: color .2s ease;
@@ -338,7 +338,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 22px;
+  gap: 26px;
   text-align: right;
 }
 
