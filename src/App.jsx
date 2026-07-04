@@ -207,8 +207,8 @@ async function handlePageChange(nextPage) {
             <span>HOME</span>
           </a>
 
-          <a href="/under-construction.html">
-            <Search className="nav-icon" aria-hidden="true" />
+          <a href="https://ssus-passenger-search.netlify.app">
+            <ShipWheel className="nav-icon" aria-hidden="true" />
             <span>SEARCH</span>
           </a>
 
