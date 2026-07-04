@@ -186,38 +186,37 @@ h1 {
 }
 
 .archive-stats {
-  max-width: 760px;
+  max-width: 860px;
   margin: 22px auto 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--soft-gold);
+  display: flex;
+  justify-content: center;
+  gap: 46px;
+  padding: 0 0 18px;
   border-bottom: 1px solid var(--soft-gold);
 }
 
 .archive-stats div {
-  padding: 18px 14px;
+  padding: 0;
   text-align: center;
 }
 
 .archive-stats div + div {
-  border-left: 1px solid var(--soft-gold);
+  border-left: none;
+}
+
+.archive-stats strong,
+.archive-stats span {
+  display: inline;
+  color: var(--navy);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .archive-stats strong {
-  display: block;
-  color: var(--navy);
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.65rem;
-  line-height: 1;
-}
-
-.archive-stats span {
-  display: block;
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  margin-right: 4px;
 }
 
 input,
@@ -232,8 +231,8 @@ select {
 
 button {
   padding: 16px 34px;
-  border: 1px solid var(--navy);
-  background: var(--navy);
+  border: 1px solid #b28a5f;
+  background: #b28a5f;
   color: white;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -556,10 +555,22 @@ button:disabled {
 @media (max-width: 760px) {
   .site-header {
     display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    padding: 36px 22px 26px;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    padding: 28px 18px 20px;
     gap: 18px;
+    border-bottom: 1px solid var(--soft-gold);
+  }
+
+  .logo-link {
+    width: auto;
+    justify-content: flex-start;
+    margin: 0;
+  }
+
+  .site-logo {
+    height: 66px;
+    margin: 0;
   }
 
   .site-nav {
@@ -568,43 +579,26 @@ button:disabled {
     grid-template-columns: repeat(4, 1fr);
     align-items: end;
     justify-items: center;
-    gap: 10px;
-    order: 1;
+    gap: 8px;
   }
 
   .site-nav a {
     display: grid;
     justify-items: center;
-    gap: 8px;
+    gap: 7px;
     white-space: nowrap;
+    font-size: 0.68rem;
   }
 
   .nav-icon {
     display: block;
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
     stroke-width: 1.8;
   }
 
-  .logo-link {
-    order: 2;
-    width: auto;
-    justify-content: center;
-    margin-top: 14px;
-  }
-
-  .site-logo {
-    height: 76px;
-    margin: 0;
-  }
-
   .hero-section {
-    padding-top: 72px;
-  }
-
-  /* keep the divider closer to the logo/header */
-  .site-header {
-    border-bottom: 1px solid var(--soft-gold);
+    padding-top: 58px;
   }
 
   .search-panel,
