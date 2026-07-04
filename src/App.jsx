@@ -92,97 +92,98 @@ function App() {
   const resultsSectionRef = useRef(null);
   const pendingSearchTermRef = useRef("");
 
-  function showTurnstile() {
-    setPendingSearch(true);
+function showTurnstile() {
+  setPendingSearch(true);
+  setError("");
 
-    if (!window.turnstile || !turnstileContainerRef.current) {
-      setError("Archive verification is still loading. Please try again in a moment.");
-      setPendingSearch(false);
-      return;
-    }
-
-    if (turnstileWidgetId.current) {
-      window.turnstile.reset(turnstileWidgetId.current);
-      return;
-    }
-
-    turnstileWidgetId.current = window.turnstile.render(
-      turnstileContainerRef.current,
-      {
-        sitekey: import.meta.env.VITE_TURNSTILE_SITE_KEY,
-        callback: (token) => {
-          setTurnstileToken(token);
-          setPendingSearch(false);
-          runSearch(1, token, pendingSearchTermRef.current);
-        },
-        "expired-callback": () => {
-          setTurnstileToken("");
-          setPendingSearch(false);
-        },
-        "error-callback": () => {
-          setTurnstileToken("");
-          setPendingSearch(false);
-          setError("Archive verification failed. Please try again.");
-        },
-      }
-    );
+  if (!window.turnstile || !turnstileContainerRef.current) {
+    setError("Archive verification is still loading. Please try again in a moment.");
+    setPendingSearch(false);
+    return;
   }
 
-  async function runSearch(
-    targetPage,
-    token = turnstileToken,
-    term = searchTerm
-  ) {
-    setLoading(true);
-    setError("");
-    setHasSearched(true);
+  if (turnstileWidgetId.current) {
+    window.turnstile.remove(turnstileWidgetId.current);
+    turnstileWidgetId.current = null;
+  }
 
-    try {
-      const searchData = await searchPassengers(term, targetPage, token);
-
-      setResults(searchData.results);
-      setTotalCount(searchData.totalCount);
-      setPage(targetPage);
-
-      if (targetPage === 1) {
+  turnstileWidgetId.current = window.turnstile.render(
+    turnstileContainerRef.current,
+    {
+      sitekey: import.meta.env.VITE_TURNSTILE_SITE_KEY,
+      callback: (token) => {
+        setTurnstileToken(token);
+        setPendingSearch(false);
+        runSearch(1, token, pendingSearchTermRef.current);
+      },
+      "expired-callback": () => {
         setTurnstileToken("");
-        if (turnstileWidgetId.current && window.turnstile) {
-          window.turnstile.reset(turnstileWidgetId.current);
-        }
+        setPendingSearch(false);
+      },
+      "error-callback": () => {
+        setTurnstileToken("");
+        setPendingSearch(false);
+        setError("Archive verification failed. Please try again.");
+      },
+    }
+  );
+}
+
+async function runSearch(targetPage, token = "", term = pendingSearchTermRef.current) {
+  setLoading(true);
+  setError("");
+  setHasSearched(true);
+
+  try {
+    const searchData = await searchPassengers(term, targetPage, token);
+
+    setResults(searchData.results);
+    setTotalCount(searchData.totalCount);
+    setPage(targetPage);
+
+    if (targetPage === 1) {
+      setTurnstileToken("");
+
+      if (turnstileWidgetId.current && window.turnstile) {
+        window.turnstile.remove(turnstileWidgetId.current);
+        turnstileWidgetId.current = null;
       }
 
-      requestAnimationFrame(() => {
-        resultsSectionRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+      setPendingSearch(false);
+    }
+
+    requestAnimationFrame(() => {
+      resultsSectionRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
-    } catch (err) {
-      console.error(err);
-      setError(err.message);
-      setResults([]);
-    } finally {
-      setLoading(false);
-    }
+    });
+  } catch (err) {
+    console.error(err);
+    setError(err.message);
+    setResults([]);
+  } finally {
+    setLoading(false);
   }
+}
 
-  async function handleSearch(event) {
-    event.preventDefault();
+async function handleSearch(event) {
+  event.preventDefault();
 
-    const submittedTerm = searchTerm.trim();
-    pendingSearchTermRef.current = submittedTerm;
+  const submittedTerm = searchTerm.trim();
+  pendingSearchTermRef.current = submittedTerm;
 
-    if (!turnstileToken) {
-      showTurnstile();
-      return;
-    }
+  setResults([]);
+  setTotalCount(0);
+  setPage(1);
+  setTurnstileToken("");
 
-    runSearch(1, turnstileToken, submittedTerm);
-  }
+  showTurnstile();
+}
 
-  async function handlePageChange(nextPage) {
-    runSearch(nextPage, turnstileToken, pendingSearchTermRef.current);
-  }
+async function handlePageChange(nextPage) {
+  runSearch(nextPage);
+}
 
   const pageSize = 25;
   const totalPages = Math.ceil(totalCount / pageSize);
