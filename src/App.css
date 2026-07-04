@@ -558,16 +558,18 @@ button:disabled {
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
-    padding: 26px 24px 28px;
+    padding: 36px 22px 26px;
     gap: 18px;
   }
 
   .site-nav {
     width: 100%;
-    order: 1;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    align-items: end;
+    justify-items: center;
+    gap: 10px;
+    order: 1;
   }
 
   .site-nav a {
@@ -575,13 +577,12 @@ button:disabled {
     justify-items: center;
     gap: 8px;
     white-space: nowrap;
-    font-size: 0.82rem;
   }
 
   .nav-icon {
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
     stroke-width: 1.8;
   }
 
@@ -589,11 +590,21 @@ button:disabled {
     order: 2;
     width: auto;
     justify-content: center;
+    margin-top: 14px;
   }
 
   .site-logo {
-    height: 82px;
+    height: 76px;
     margin: 0;
+  }
+
+  .hero-section {
+    padding-top: 72px;
+  }
+
+  /* keep the divider closer to the logo/header */
+  .site-header {
+    border-bottom: 1px solid var(--soft-gold);
   }
 
   .search-panel,
