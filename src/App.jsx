@@ -443,11 +443,13 @@ async function handlePageChange(nextPage) {
           </div>
 
           <div className="footer-contact">
-            <strong>Contact Us:</strong>
+            <div className="footer-contact-info">
+              <strong>Contact Us:</strong>
 
-            <a href="mailto:ssusopguide@gmail.com">
-              ssusopguide@gmail.com
-            </a>
+              <a href="mailto:ssusopguide@gmail.com">
+                ssusopguide@gmail.com
+              </a>
+            </div>
 
             <div className="footer-socials">
               <a
