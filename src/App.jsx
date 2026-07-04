@@ -1,12 +1,6 @@
 import { useState, useRef } from "react";
-import {
-  Home,
-  ShipWheel,
-  ShoppingBag,
-  Info,
-  FacebookIcon,
-  InstagramIcon,
-} from "lucide-react";
+import { Home, ShipWheel, ShoppingBag, Info } from "lucide-react";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
 
 import "./App.css";
 import { searchPassengers } from "./services/archiveApi";
@@ -462,7 +456,7 @@ async function handlePageChange(nextPage) {
                 rel="noopener noreferrer"
                 aria-label="Facebook"
               >
-                <Facebook />
+                <FaFacebookF />
               </a>
 
               <a
@@ -471,7 +465,7 @@ async function handlePageChange(nextPage) {
                 rel="noopener noreferrer"
                 aria-label="Instagram"
               >
-                <Instagram />
+                <FaInstagram />
               </a>
             </div>
 
