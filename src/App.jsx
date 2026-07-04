@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Home, Search, ShoppingBag, Info } from "lucide-react";
 import "./App.css";
-import { searchPassengers } from "./services/supabase";
+import { searchPassengers } from "./services/archiveApi";
 
 function formatSailingDate(dateString) {
   if (!dateString) return "Not Recorded";
