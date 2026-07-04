@@ -1,4 +1,4 @@
-export async function searchPassengers(searchTerm, page = 1) {
+export async function searchPassengers(searchTerm, page = 1, turnstileToken = "") {
   const response = await fetch("/.netlify/functions/searchEndpoint", {
     method: "POST",
     headers: {
@@ -7,6 +7,7 @@ export async function searchPassengers(searchTerm, page = 1) {
     body: JSON.stringify({
       searchTerm,
       page,
+      turnstileToken,
     }),
   });
 

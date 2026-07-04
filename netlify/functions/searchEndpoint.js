@@ -14,7 +14,39 @@ export async function handler(event) {
   }
 
   try {
-    const { searchTerm = "", page = 1 } = JSON.parse(event.body || "{}");
+    const {
+      searchTerm = "",
+      page = 1,
+      turnstileToken = "",
+    } = JSON.parse(event.body || "{}");
+
+    const verifyResponse = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          secret: process.env.TURNSTILE_SECRET_KEY,
+          response: turnstileToken,
+        }),
+      }
+    );
+
+    const verifyData = await verifyResponse.json();
+
+    if (!verifyData.success) {
+      return {
+        statusCode: 403,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          error: "Please complete archive verification before searching.",
+        }),
+      };
+    }
 
     const results = await searchPassengers(searchTerm, Number(page));
 

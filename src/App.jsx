@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Home, Search, ShoppingBag, Info } from "lucide-react";
 import "./App.css";
 import { searchPassengers } from "./services/archiveApi";
@@ -84,36 +84,59 @@ function App() {
   const [page, setPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
 
-  async function handleSearch(event) {
-    event.preventDefault();
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [pendingSearch, setPendingSearch] = useState(false);
 
+  const turnstileContainerRef = useRef(null);
+  const turnstileWidgetId = useRef(null);
+
+  function showTurnstile() {
+    setPendingSearch(true);
+
+    if (!window.turnstile || !turnstileContainerRef.current) {
+      setError("Archive verification is still loading. Please try again in a moment.");
+      setPendingSearch(false);
+      return;
+    }
+
+    if (turnstileWidgetId.current) {
+      window.turnstile.reset(turnstileWidgetId.current);
+      return;
+    }
+
+    turnstileWidgetId.current = window.turnstile.render(
+      turnstileContainerRef.current,
+      {
+        sitekey: import.meta.env.VITE_TURNSTILE_SITE_KEY,
+        callback: (token) => {
+          setTurnstileToken(token);
+          setPendingSearch(false);
+          runSearch(1, token);
+        },
+        "expired-callback": () => {
+          setTurnstileToken("");
+          setPendingSearch(false);
+        },
+        "error-callback": () => {
+          setTurnstileToken("");
+          setPendingSearch(false);
+          setError("Archive verification failed. Please try again.");
+        },
+      }
+    );
+  }
+
+  async function runSearch(targetPage, token = turnstileToken) {
     setLoading(true);
     setError("");
     setHasSearched(true);
 
     try {
-      const searchData = await searchPassengers(searchTerm, 1);
+      const searchData = await searchPassengers(searchTerm, targetPage, token);
+
       setResults(searchData.results);
       setTotalCount(searchData.totalCount);
-      setPage(1);
-    } catch (err) {
-        console.error(err);
-        setError("Unable to search the passenger archive.");
-      setResults([]);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function handlePageChange(nextPage) {
-    setLoading(true);
-    setError("");
-
-    try {
-      const searchData = await searchPassengers(searchTerm, nextPage);
-      setResults(searchData.results);
-      setTotalCount(searchData.totalCount);
-      setPage(nextPage);
+      setPage(targetPage);
     } catch (err) {
       console.error(err);
       setError(err.message);
@@ -121,6 +144,21 @@ function App() {
     } finally {
       setLoading(false);
     }
+  }
+
+  async function handleSearch(event) {
+    event.preventDefault();
+
+    if (!turnstileToken) {
+      showTurnstile();
+      return;
+    }
+
+    runSearch(1);
+  }
+
+  async function handlePageChange(nextPage) {
+    runSearch(nextPage);
   }
 
   const pageSize = 25;
@@ -187,6 +225,11 @@ function App() {
             {loading ? "SEARCHING..." : "SEARCH"}
           </button>
         </div>
+
+        <div
+          ref={turnstileContainerRef}
+          className={pendingSearch ? "turnstile-wrap visible" : "turnstile-wrap"}
+        />
       </form>
 
       <section className="results-section">

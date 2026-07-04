@@ -123,6 +123,16 @@ h1 {
   gap: 12px;
 }
 
+.turnstile-wrap {
+  display: none;
+  margin-top: 18px;
+  justify-content: center;
+}
+
+.turnstile-wrap.visible {
+  display: flex;
+}
+
 input,
 select {
   width: 100%;
