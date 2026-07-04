@@ -89,6 +89,7 @@ function App() {
 
   const turnstileContainerRef = useRef(null);
   const turnstileWidgetId = useRef(null);
+  const resultsSectionRef = useRef(null);
 
   function showTurnstile() {
     setPendingSearch(true);
@@ -137,6 +138,13 @@ function App() {
       setResults(searchData.results);
       setTotalCount(searchData.totalCount);
       setPage(targetPage);
+
+      requestAnimationFrame(() => {
+        resultsSectionRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
     } catch (err) {
       console.error(err);
       setError(err.message);
@@ -232,7 +240,10 @@ function App() {
         />
       </form>
 
-      <section className="results-section">
+      <section
+        ref={resultsSectionRef}
+        className="results-section"
+      >
         <div className="results-header">
           <h2>Search Results</h2>
           <span>
