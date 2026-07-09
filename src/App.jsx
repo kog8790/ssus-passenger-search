@@ -259,12 +259,12 @@ async function handlePageChange(nextPage) {
 
         <div className="archive-stats">
           <div>
-            <strong>93,000+</strong>
+            <strong>95,000+</strong>
             <span>Passenger Records</span>
           </div>
 
           <div>
-            <strong>175+</strong>
+            <strong>180+</strong>
             <span>Voyages</span>
           </div>
 
