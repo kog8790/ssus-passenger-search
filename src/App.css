@@ -26,11 +26,12 @@ body {
 
 .site-header {
   display: grid;
-  grid-template-columns: 260px auto;
+  grid-template-columns: 177px auto;
   justify-content: start;
   align-items: center;
-  column-gap: 120px;
-  padding: 28px 4.25%;
+  column-gap: 170px;
+  height: 112px;
+  padding: 0 50px;
   border-bottom: 1px solid var(--soft-gold);
 }
 
@@ -42,18 +43,16 @@ body {
 
 .site-logo {
   display: block;
-  height: 82px;
-  width: auto;
+  width: 177px;
+  height: 54px;
   object-fit: contain;
-
-  margin-top: -18px;
-  margin-bottom: -18px;
+  margin: 0;
 }
 
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 54px;
+  gap: 68px;
   margin: 0;
   font-size: 0.96rem;
   font-weight: 700;
