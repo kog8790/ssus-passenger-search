@@ -198,7 +198,7 @@ async function handlePageChange(nextPage) {
       <header className="site-header">
         <a className="logo-link" href="https://www.ssusopguide.com">
           <img
-            src="/hull_488_noBG.png"
+            src="/legacy_logo.jpg"
             alt="Hull 488 Literary"
             className="site-logo"
           />
