@@ -24,27 +24,27 @@ body {
   background: linear-gradient(180deg, #ffffff 0%, var(--cream) 100%);
 }
 
-.site-header {
-  display: grid;
-  grid-template-columns: 177px auto;
-  justify-content: start;
-  align-items: center;
-  column-gap: 170px;
-  height: 112px;
-  padding: 0 50px;
-  border-bottom: 1px solid var(--soft-gold);
-}
-
 .logo-link {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
 }
 
+.site-header {
+  display: grid;
+  grid-template-columns: 170px auto;
+  justify-content: start;
+  align-items: center;
+  column-gap: 150px;
+  height: 112px;
+  padding: 0 42px;
+  border-bottom: none;
+}
+
 .site-logo {
   display: block;
-  width: 177px;
-  height: 54px;
+  width: 170px;
+  height: 52px;
   object-fit: contain;
   margin: 0;
 }
@@ -52,7 +52,7 @@ body {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 68px;
+  gap: 60px;
   margin: 0;
   font-size: 0.96rem;
   font-weight: 700;
