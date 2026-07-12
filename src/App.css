@@ -28,7 +28,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 28px 7%;
+  padding: 18px 7%;
   border-bottom: 1px solid var(--soft-gold);
 }
 
@@ -40,18 +40,18 @@ body {
 
 .site-logo {
   display: block;
-  height: 110px;
+  height: 70px;
   width: auto;
   object-fit: contain;
-
-  margin-top: -18px;
-  margin-bottom: -18px;
+  margin: 0;
 }
 
 .site-nav {
   display: flex;
-  gap: 28px;
-  font-size: 0.78rem;
+  align-items: center;
+  gap: 42px;
+  font-size: 0.82rem;
+  font-weight: 700;
   letter-spacing: 0.08em;
 }
 
