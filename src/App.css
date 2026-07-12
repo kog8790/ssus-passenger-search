@@ -22,6 +22,19 @@ body {
 .archive-page {
   min-height: 100vh;
   background: linear-gradient(180deg, #ffffff 0%, var(--cream) 100%);
+  border-left: none;
+  border-right: none;
+}
+
+#root {
+  border-left: none;
+  border-right: none;
+}
+
+html,
+body {
+  border-left: none;
+  border-right: none;
 }
 
 .logo-link {
