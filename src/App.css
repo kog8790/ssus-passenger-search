@@ -64,8 +64,17 @@ body {
   text-decoration: none;
 }
 
+.site-nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
 .site-nav .nav-search {
-  color: var(--gold);
+  color: var(--navy);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
 
 .hero-section {
