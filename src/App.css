@@ -60,12 +60,8 @@ body {
   text-decoration: none;
 }
 
-.site-nav a:nth-child(2) {
+.site-nav .nav-search {
   color: var(--gold);
-}
-
-.nav-icon {
-  display: none;
 }
 
 .hero-section {
@@ -591,20 +587,25 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.mobile-menu-button {
+  display: none;
+}
+
 @media (max-width: 760px) {
   .site-header {
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 28px 18px 20px;
-    gap: 18px;
-    border-bottom: 1px solid var(--soft-gold);
+    padding: 28px 28px 20px;
+    border-bottom: none;
   }
 
   .logo-link {
     width: auto;
     justify-content: flex-start;
     margin: 0;
+    position: relative;
+    z-index: 40;
   }
 
   .site-logo {
@@ -612,28 +613,49 @@ button:disabled {
     margin: 0;
   }
 
+  .mobile-menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--navy);
+    position: relative;
+    z-index: 40;
+  }
+
+  .mobile-menu-button svg {
+    width: 38px;
+    height: 38px;
+    stroke-width: 1.6;
+  }
+
   .site-nav {
-    width: 100%;
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    display: none;
+    background: #ffffff;
+    padding-top: 190px;
+    text-align: center;
+  }
+
+  .site-nav.mobile-menu-open {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    align-items: end;
+    align-content: start;
     justify-items: center;
-    gap: 8px;
+    gap: 32px;
   }
 
   .site-nav a {
-    display: grid;
-    justify-items: center;
-    gap: 7px;
-    white-space: nowrap;
-    font-size: 0.68rem;
-  }
-
-  .nav-icon {
-    display: block;
-    width: 30px;
-    height: 30px;
-    stroke-width: 1.8;
+    color: var(--navy);
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
   }
 
   .hero-section {

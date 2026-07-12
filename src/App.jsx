@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Home, ShipWheel, ShoppingBag, Info } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 
 import "./App.css";
@@ -88,6 +88,7 @@ function App() {
 
   const [turnstileToken, setTurnstileToken] = useState("");
   const [pendingSearch, setPendingSearch] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const turnstileContainerRef = useRef(null);
   const turnstileWidgetId = useRef(null);
@@ -195,7 +196,7 @@ async function handlePageChange(nextPage) {
   return (
     <main className="archive-page">
       <header className="site-header">
-        <a className="logo-link" href="/">
+        <a className="logo-link" href="https://www.ssusopguide.com">
           <img
             src="/hull_488_noBG.png"
             alt="Hull 488 Literary"
@@ -203,26 +204,26 @@ async function handlePageChange(nextPage) {
           />
         </a>
 
-        <nav className="site-nav" aria-label="Primary navigation">
-          <a href="https://www.ssusopguide.com">
-            <Home className="nav-icon" aria-hidden="true" />
-            <span>HOME</span>
-          </a>
+        <button
+          type="button"
+          className="mobile-menu-button"
+          aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={mobileMenuOpen}
+          onClick={() => setMobileMenuOpen((isOpen) => !isOpen)}
+        >
+          {mobileMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+        </button>
 
-          <a href="https://ssus-passenger-search.netlify.app">
-            <ShipWheel className="nav-icon" aria-hidden="true" />
-            <span>SEARCH</span>
+        <nav
+          className={mobileMenuOpen ? "site-nav mobile-menu-open" : "site-nav"}
+          aria-label="Primary navigation"
+        >
+          <a href="https://www.ssusopguide.com">HOME</a>
+          <a href="https://www.ssusopguide.com/category/all-products">SEA SHOP</a>
+          <a href="https://ssus-passenger-search.netlify.app" className="nav-search">
+            PASSENGER SEARCH
           </a>
-
-          <a href="https://www.ssusopguide.com/category/all-products">
-            <ShoppingBag className="nav-icon" aria-hidden="true" />
-            <span>SHOP</span>
-          </a>
-
-          <a href="https://www.ssusopguide.com/about-hull-488-literary">
-            <Info className="nav-icon" aria-hidden="true" />
-            <span>ABOUT</span>
-          </a>
+          <a href="https://www.ssusopguide.com/about-hull-488-literary">ABOUT</a>
         </nav>
       </header>
 
