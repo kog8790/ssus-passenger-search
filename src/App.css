@@ -621,7 +621,7 @@ button:disabled {
   body {
     background: #fcfcf8;
   }
-  
+
   .site-header {
     width: 100%;
     max-width: 100vw;
@@ -634,16 +634,22 @@ button:disabled {
   }
 
   .logo-link {
-    width: auto;
+    display: inline-flex;
+    width: 155px;
+    height: 47px;
+    align-items: center;
     justify-content: flex-start;
     margin: 0;
     position: relative;
     z-index: 40;
+    overflow: hidden;
   }
 
   .site-logo {
+    display: block;
     width: 155px;
-    height: auto;
+    height: 47px;
+    object-fit: contain;
     margin: 0;
   }
 
