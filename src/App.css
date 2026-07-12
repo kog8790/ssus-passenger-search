@@ -628,14 +628,16 @@ button:disabled {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 28px 30px 20px;
+    padding: 28px 24px 20px;
     border-bottom: none;
     overflow: hidden;
   }
 
   .logo-link {
     display: inline-flex;
-    width: auto;
+    flex: 0 1 auto;
+    width: 160px;
+    max-width: calc(100vw - 110px);
     height: auto;
     align-items: center;
     justify-content: flex-start;
@@ -647,7 +649,7 @@ button:disabled {
 
   .site-logo {
     display: block;
-    width: 185px;
+    width: 160px;
     height: auto;
     object-fit: contain;
     margin: 0;
@@ -666,6 +668,7 @@ button:disabled {
     color: var(--navy);
     position: relative;
     z-index: 40;
+    margin-left: auto;
   }
 
   .mobile-menu-button svg {
