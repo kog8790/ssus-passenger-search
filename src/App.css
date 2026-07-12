@@ -25,9 +25,12 @@ body {
 }
 
 .site-header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 260px auto;
+  justify-content: start;
   align-items: center;
-  padding: 18px 6.5%;
+  column-gap: 120px;
+  padding: 28px 4.25%;
   border-bottom: 1px solid var(--soft-gold);
 }
 
@@ -39,7 +42,7 @@ body {
 
 .site-logo {
   display: block;
-  height: 110px;
+  height: 82px;
   width: auto;
   object-fit: contain;
 
@@ -51,9 +54,8 @@ body {
   display: flex;
   align-items: center;
   gap: 54px;
-  margin-left: auto;
-  margin-right: 7.5%;
-  font-size: 0.92rem;
+  margin: 0;
+  font-size: 0.96rem;
   font-weight: 700;
   letter-spacing: 0.07em;
 }
