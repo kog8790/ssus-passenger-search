@@ -25,9 +25,11 @@ body {
 }
 
 .site-header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
   align-items: center;
+  gap: 180px;
   padding: 18px 7%;
   border-bottom: 1px solid var(--soft-gold);
 }
@@ -40,16 +42,18 @@ body {
 
 .site-logo {
   display: block;
-  height: 70px;
+  height: 110px;
   width: auto;
   object-fit: contain;
-  margin: 0;
+
+  margin-top: -18px;
+  margin-bottom: -18px;
 }
 
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 42px;
+  gap: 48px;
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
