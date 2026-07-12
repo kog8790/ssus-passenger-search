@@ -628,7 +628,7 @@ button:disabled {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 28px 24px 20px;
+    padding: 28px 16px 20px 14px;
     border-bottom: none;
     overflow: hidden;
   }
@@ -636,8 +636,8 @@ button:disabled {
   .logo-link {
     display: inline-flex;
     flex: 0 1 auto;
-    width: 160px;
-    max-width: calc(100vw - 110px);
+    width: 145px;
+    max-width: calc(100vw - 100px);
     height: auto;
     align-items: center;
     justify-content: flex-start;
@@ -649,7 +649,7 @@ button:disabled {
 
   .site-logo {
     display: block;
-    width: 160px;
+    width: 145px;
     height: auto;
     object-fit: contain;
     margin: 0;
