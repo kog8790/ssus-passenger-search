@@ -628,27 +628,27 @@ button:disabled {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 28px 22px 20px;
+    padding: 28px 30px 20px;
     border-bottom: none;
     overflow: hidden;
   }
 
   .logo-link {
     display: inline-flex;
-    width: 155px;
-    height: 47px;
+    width: auto;
+    height: auto;
     align-items: center;
     justify-content: flex-start;
     margin: 0;
     position: relative;
     z-index: 40;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .site-logo {
     display: block;
-    width: 155px;
-    height: 47px;
+    width: 185px;
+    height: auto;
     object-fit: contain;
     margin: 0;
   }
