@@ -618,6 +618,10 @@ button:disabled {
 }
 
 @media (max-width: 760px) {
+  body {
+    background: #fcfcf8;
+  }
+  
   .site-header {
     width: 100%;
     max-width: 100vw;
@@ -668,12 +672,14 @@ button:disabled {
     width: 100%;
     max-width: 100vw;
     overflow-x: hidden;
+    background: #fcfcf8;
   }
 
   .hero-section {
     max-width: 100%;
     padding: 58px 22px 52px;
     overflow: hidden;
+    background: #fcfcf8;
   }
 
   h1 {
@@ -713,6 +719,7 @@ button:disabled {
     max-width: 680px;
     padding: 26px 0;
     overflow: hidden;
+    background: #fcfcf8;
   }
 
   .search-row {
@@ -825,6 +832,10 @@ button:disabled {
   .archive-page-label {
     order: -1;
     font-size: 1.2rem;
+  }
+
+  .site-footer {
+    background: #fcfcf8;
   }
 
   .footer-bottom {
