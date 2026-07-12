@@ -435,7 +435,7 @@ async function handlePageChange(nextPage) {
 
           <div className="footer-left">
             <img
-              src="/hull_488_noBG.png"
+              src="/legacy_logo.jpg"
               alt="Hull 488 Literary"
               className="footer-logo"
             />
