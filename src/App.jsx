@@ -204,7 +204,7 @@ async function handlePageChange(nextPage) {
         </a>
 
         <nav className="site-nav" aria-label="Primary navigation">
-          <a href="/under-construction.html">
+          <a href="https://www.ssusopguide.com">
             <Home className="nav-icon" aria-hidden="true" />
             <span>HOME</span>
           </a>
@@ -214,12 +214,12 @@ async function handlePageChange(nextPage) {
             <span>SEARCH</span>
           </a>
 
-          <a href="/under-construction.html">
+          <a href="https://www.ssusopguide.com/category/all-products">
             <ShoppingBag className="nav-icon" aria-hidden="true" />
             <span>SHOP</span>
           </a>
 
-          <a href="/under-construction.html">
+          <a href="https://www.ssusopguide.com/about-hull-488-literary">
             <Info className="nav-icon" aria-hidden="true" />
             <span>ABOUT</span>
           </a>
