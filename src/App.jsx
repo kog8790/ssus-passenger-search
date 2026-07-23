@@ -219,11 +219,25 @@ async function handlePageChange(nextPage) {
           aria-label="Primary navigation"
         >
           <a href="https://www.ssusopguide.com">HOME</a>
-          <a href="https://www.ssusopguide.com/category/all-products">SEA SHOP</a>
-          <a href="https://ssus-passenger-search.netlify.app" className="nav-search">
+
+          <a href="https://www.ssusopguide.com/category/all-products">
+            SEA SHOP
+          </a>
+
+          <a
+            href="https://ssus-passenger-search.netlify.app"
+            className="nav-search"
+          >
             PASSENGER SEARCH
           </a>
-          <a href="https://www.ssusopguide.com/about-hull-488-literary">ABOUT</a>
+
+          <a href="https://www.ssusopguide.com/blog">
+            THE OCEAN PRESS
+          </a>
+
+          <a href="https://www.ssusopguide.com/about-hull-488-literary">
+            ABOUT
+          </a>
         </nav>
       </header>
 
